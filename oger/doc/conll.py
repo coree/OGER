@@ -173,7 +173,7 @@ class CoNLLFormatter(StreamFormatter):
         return tag
 
     def write(self, stream, content):
-        writer = csv.writer(stream, **tsv_format)
+        writer = csv.writer(stream, escapechar='\\', **tsv_format)
 
         for article in content.get_subelements('article', include_self=True):
             writer.writerows(self._article(article))
